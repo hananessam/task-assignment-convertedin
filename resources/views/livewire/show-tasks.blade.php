@@ -1,7 +1,15 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-xlg-8">
-            <div class="fs-3 mb-3">{{ __('Tasks') }}</div>
+            <div class="mb-3 d-flex justify-content-between align-atems-center">
+                <h3>
+                    {{ __('Tasks') }}
+                </h3>
+
+                <a href="{{ route('create-task') }}" class="btn btn-success">
+                    {{ __('Create task') }}
+                </a>
+            </div>
             <div class="card">
                 <div class="card-body">
                     @if (session('status'))

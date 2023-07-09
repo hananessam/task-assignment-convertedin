@@ -1,6 +1,9 @@
 <?php
 
-use App\Http\Livewire\ShowTasks;
+use App\Http\Livewire\{
+    ShowTasks,
+    CreateTask
+};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +24,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/tasks', ShowTasks::class)->name('show-tasks');
+Route::group(['prefix' => 'tasks'], function () {
+    Route::get('/', ShowTasks::class)->name('show-tasks');
+    Route::get('/create', CreateTask::class)->name('create-task');
+});
