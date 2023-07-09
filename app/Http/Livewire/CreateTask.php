@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Events\TaskAssigned;
 use App\Models\Admin;
 use App\Models\Task;
 use App\Models\User;
@@ -30,6 +31,10 @@ class CreateTask extends Component
             'title' => $this->title,
             'description' => $this->description,
         ]);
+
+        if ($task) {
+            TaskAssigned::dispatch($task);
+        }
         return redirect()->route('show-tasks');
     }
 
