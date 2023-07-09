@@ -2,7 +2,8 @@
 
 use App\Http\Livewire\{
     ShowTasks,
-    CreateTask
+    CreateTask,
+    ShowStatistics
 };
 use Illuminate\Support\Facades\Route;
 
@@ -19,11 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', ShowStatistics::class)->name('show-statistics');
 Route::group(['prefix' => 'tasks'], function () {
     Route::get('/', ShowTasks::class)->name('show-tasks');
     Route::get('/create', CreateTask::class)->name('create-task');
