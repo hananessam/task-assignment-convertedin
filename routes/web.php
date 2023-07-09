@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\ShowTasks;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,4 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/tasks', ShowTasks::class)->name('show-tasks');
